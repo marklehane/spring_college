@@ -16,8 +16,10 @@ public class Application {
 
 		try {
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
+			Artwork artwork = new ObjectMapper().readValue(new File(artistFile), Artwork.class);
 			
 			System.out.println("\n" + artist.toString());
+			System.out.println("\n" + artwork.toString());
 			
 		} catch (JsonParseException e) {
 			
