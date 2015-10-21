@@ -12,7 +12,9 @@ public class Application {
 	public static void main(String[] args) {
 		
 		String artistFile = args[0];
+		String artworkFile = args[0];
 		System.out.printf("Processing Artist file %s...\n", artistFile);
+		System.out.printf("Processing Artwork file %s...\n", artworkFile);
 
 		try {
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
