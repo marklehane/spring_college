@@ -10,10 +10,11 @@ public class Artist {
 	
 	@JsonProperty("fc")
 	private String fullName;
+	private String gender;
 	
 	public String toString() {
 		
-		String artistAsString = "Name: " + fullName + "\nBorn: " + birthYear;
+		String artistAsString = "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender;
 		
 		return artistAsString;
 		
@@ -33,6 +34,14 @@ public class Artist {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	
