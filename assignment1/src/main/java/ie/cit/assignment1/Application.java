@@ -12,13 +12,13 @@ public class Application {
 	public static void main(String[] args) {
 		
 		String artistFile = args[0];
-		String artworkFile = args[0];
+		String artworkFile = args[1];
 		System.out.printf("Processing Artist file %s...\n", artistFile);
 		System.out.printf("Processing Artwork file %s...\n", artworkFile);
 
 		try {
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
-			Artwork artwork = new ObjectMapper().readValue(new File(artistFile), Artwork.class);
+			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
 			
 			System.out.println("\n" + artist.toString());
 			System.out.println("\n" + artwork.toString());
