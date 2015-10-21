@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Artist {
 
 	private int birthYear;
+	private int totalWorks;
 	
 	@JsonProperty("fc")
 	private String fullName;
@@ -14,7 +15,7 @@ public class Artist {
 	
 	public String toString() {
 		
-		String artistAsString = "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender;
+		String artistAsString = "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender + "\nTotal Works: " + totalWorks;
 		
 		return artistAsString;
 		
@@ -42,6 +43,14 @@ public class Artist {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public int getTotalWorks() {
+		return totalWorks;
+	}
+
+	public void setTotalWorks(int totalWorks) {
+		this.totalWorks = totalWorks;
 	}
 	
 	
