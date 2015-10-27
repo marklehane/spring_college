@@ -18,19 +18,13 @@ public class Artwork {
 		
 	}
 	
-	
-
 	public List<Movement> getMovements() {
 		return movements;
 	}
 
-
-
 	public void setMovements(List<Movement> movements) {
 		this.movements = movements;
 	}
-
-
 
 	public String getClassification() {
 		return classification;
