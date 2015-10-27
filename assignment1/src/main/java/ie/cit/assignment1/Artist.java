@@ -1,5 +1,8 @@
 package ie.cit.assignment1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,6 +15,8 @@ public class Artist {
 	@JsonProperty("fc")
 	private String fullName;
 	private String gender;
+	
+	List<Movement> movements = new ArrayList<Movement>();
 	
 	public String toString() {
 		
