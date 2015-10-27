@@ -1,36 +1,32 @@
 package ie.cit.assignment1;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movement {
+	private String name ;
+
 	
-	private int era_id ;
-	private String era_name;
+	 @Override
+	    public String toString() {
+	        return  name ;
+	    }
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
 	
-	public String toString() {
-		
-		String movementAsString = "Era ID: " + era_id + "Era Name: " + era_name ;
-		
-		return movementAsString;
-		
-	}
-
-	public int getEra_id() {
-		return era_id;
-	}
-
-	public void setEra_id(int era_id) {
-		this.era_id = era_id;
-	}
-
-	public String getEra_name() {
-		return era_name;
-	}
-
-	public void setEra_name(String era_name) {
-		this.era_name = era_name;
-	}
 
 
 }

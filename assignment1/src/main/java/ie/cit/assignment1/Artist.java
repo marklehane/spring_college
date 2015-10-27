@@ -5,26 +5,49 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Artist {
+	List<Movement> movements ;
 
 	private int birthYear;
 	private int totalWorks;
 	
 	@JsonProperty("fc")
 	private String fullName;
+
 	private String gender;
 	
-	List<Movement> movements = new ArrayList<Movement>();
 	
+	@Override
 	public String toString() {
 		
-		String artistAsString = "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender + "\nTotal Works: " + totalWorks;
+		return  "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender + "\nTotal Works: " + totalWorks +"\nMovements:"+ movements ;
 		
-		return artistAsString;
+		
 		
 	}
+
+
+
+
+
+	public List<Movement> getMovements() {
+		return movements;
+	}
+
+
+
+
+
+	public void setMovements(List<Movement> movements) {
+		this.movements = movements;
+	}
+
+
+
+
 
 	public int getBirthYear() {
 		return birthYear;
