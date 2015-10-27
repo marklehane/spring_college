@@ -1,16 +1,24 @@
 package ie.cit.assignment1;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-public class JdbcArtistRepository {
+@SpringBootApplication
+public class JdbcArtistRepository implements CommandLineRunner {
+	
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	public void run(String... arg0) throws Exception {
+
+	}
 
 	public void save()
 	{
 		
 	}
-
-
 
 }
 
