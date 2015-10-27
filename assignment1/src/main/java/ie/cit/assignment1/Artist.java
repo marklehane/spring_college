@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Artist {
 	
 	List<Movement> movements ;
-	Birth birth = new Birth();
+	private Birth birth;
 	private int birthYear;
 	private int totalWorks;
 	@JsonProperty("fc")
@@ -21,7 +21,7 @@ public class Artist {
 	@Override
 	public String toString() {
 		
-		return  "Name: " + fullName + "\nBorn: " + birthYear + "\nGender: " + gender + "\nTotal Works: " + totalWorks + "\nBirth:" + birth +"\nMovements:"+ movements ;
+		return  "Name: " + fullName + "\nBorn: " + birthYear +  "\nBirth: " + birth + "\nGender: " + gender + "\nTotal Works: " + totalWorks  +"\nMovements:"+ movements ;
 		
 	}
 
@@ -33,6 +33,8 @@ public class Artist {
 		this.movements = movements;
 	}
 	
+
+
 	public Birth getBirth() {
 		return birth;
 	}
