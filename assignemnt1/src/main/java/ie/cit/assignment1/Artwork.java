@@ -2,9 +2,12 @@ package ie.cit.assignment1;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@SpringBootApplication
 public class Artwork {
 
 	private String classification;

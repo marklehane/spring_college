@@ -3,14 +3,20 @@ package ie.cit.assignment1;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
 import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+@SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
+	 public static void main(String[] args) {
+	        SpringApplication.run(Application.class, args);
+	    
 		
 		String artistFile = args[0];
 		String artworkFile = args[1];
