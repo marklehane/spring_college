@@ -1,23 +1,31 @@
 package ie.cit.assignment1;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
 
-@SpringBootApplication
-public class JdbcArtworkRepository implements CommandLineRunner{
-	
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-	
-	public void run(String... arg0) throws Exception {
 
+public class JdbcArtworkRepository {
+	
+	private Artwork artwork;
+	
+	public JdbcArtworkRepository(Artwork artwork){
+		
+		setArtwork(artwork);
 	}
-	
+
 	public void save()
 	{
+	System.out.println("testing"+ artwork.getMovements() +
+	artwork.getClassification());
 		
 	}
+
+	public Artwork getArtwork() {
+		return artwork;
+	}
+
+	public void setArtwork(Artwork artwork) {
+		this.artwork = artwork;
+	}
+	
+	
 
 }
