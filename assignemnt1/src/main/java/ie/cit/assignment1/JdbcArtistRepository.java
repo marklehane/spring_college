@@ -42,15 +42,15 @@ public void run(String... arg0) throws Exception {
 		System.out.println("\nQuery 1 (List all artists using resultset Map)\n----------------");
 			
 		String sql = "SELECT * FROM artists";
-		List<Map<String, Object>> resultSet = jdbcTemplate.queryForList(sql);
-			
-		for (Map<String, Object> row : resultSet) {
-			System.out.println("Name: " + row.get("fullName"));
-			System.out.println("ID: " + row.get("id"));
-			System.out.println("Gender: " + row.get("gender") + "\n");
-		}
-
-
+//		List<Map<String, Object>> resultSet = jdbcTemplate.queryForList(sql);
+//			
+//		for (Map<String, Object> row : resultSet) {
+//			System.out.println("Name: " + row.get("fullName"));
+//			System.out.println("ID: " + row.get("id"));
+//			System.out.println("Gender: " + row.get("gender") + "\n");
+//		}
+//
+//
 	System.out.println("testing"+ artist.getMovements() +
 			artist.getFullName() );
 		
