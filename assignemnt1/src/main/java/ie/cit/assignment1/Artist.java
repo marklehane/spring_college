@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SpringBootApplication
-public class Artist {
+public class Artist  {
 	
 	List<Movement> movements ;
 	private Birth birth;

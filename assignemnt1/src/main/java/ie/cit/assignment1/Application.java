@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -13,6 +13,15 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootApplication
 public class Application {
+	
+	  public static DriverManagerDataSource getDataSource() {
+	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	        dataSource.setUrl("jdbc:mysql://localhost/assignment1");
+	        dataSource.setUsername("root");
+	        dataSource.setPassword("");
+	        return dataSource;
+	    }
 
 	 public static void main(String[] args) {
 	        SpringApplication.run(Application.class, args);
@@ -25,14 +34,12 @@ public class Application {
 
 		try {
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
-			JdbcArtistRepository artistworksaver = new JdbcArtistRepository(artist) ;
-			artistworksaver.save();
-			
-			
+			JdbcArtistRepository artistworksaver = new JdbcArtistRepository(getDataSource()) ;
+			artistworksaver.saveOrUpdate(artist);
 		
 			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
-			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository(artwork) ;
-			artworksaver.save();
+			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository() ;
+
 			System.out.println("\n" + artist.toString());
 			System.out.println("\n" + artwork.toString());
 			
