@@ -16,6 +16,7 @@ public class Artist  {
 	List<Movement> movements ;
 	private Birth birth;
 	private int birthYear;
+	private long id;
 	private int totalWorks;
 	@JsonProperty("fc")
 	private String fullName;
@@ -76,6 +77,14 @@ public class Artist  {
 
 	public void setTotalWorks(int totalWorks) {
 		this.totalWorks = totalWorks;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 }

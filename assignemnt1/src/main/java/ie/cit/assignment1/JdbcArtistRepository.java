@@ -1,17 +1,22 @@
 package ie.cit.assignment1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 public class JdbcArtistRepository implements ArtistDao {
  
-    private JdbcTemplate jdbcTemplate;
- 
+    private SimpleJdbcInsert jdbcTemplate;
+
+
     public JdbcArtistRepository(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
+    	this.jdbcTemplate = new SimpleJdbcInsert(dataSource);
     }
  
   
@@ -25,8 +30,24 @@ public class JdbcArtistRepository implements ArtistDao {
 	@Override
 	public void saveOrUpdate(Artist artist) {
 		// insert
-        String sql = "INSERT INTO artists (fullname, gender)  VALUES (?, ?)";
-        jdbcTemplate.update(sql, artist.getFullName(), artist.getGender());
+		jdbcTemplate.withTableName("artists");
+		jdbcTemplate.setGeneratedKeyName("id");
+		List insertList = new ArrayList();
+		insertList.add("fullname");
+		insertList.add("gender");
+		jdbcTemplate.setColumnNames(insertList);
+		
+		
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("fullname", artist.getFullName());
+		parameters.put("gender", artist.getGender());
+		Number key = jdbcTemplate.executeAndReturnKey(new MapSqlParameterSource(parameters));
+		
+		if (key != null){
+		    artist.setId(key.longValue());
+
+		}
+
 		
 	}
 
