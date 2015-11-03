@@ -89,7 +89,7 @@ public class JdbcArtistRepository implements ArtistDao {
 			String insertSql2 ;
 			insertSql2 ="insert into artist_movements values(?,?)";
 			try {
-	        jdbcTemplate.update(insertSql2,new Object[]{m.getId(),artistId});
+	        jdbcTemplate.update(insertSql2,new Object[]{artistId, m.getId()});
 			}
 			catch(Exception e)
 			    {
