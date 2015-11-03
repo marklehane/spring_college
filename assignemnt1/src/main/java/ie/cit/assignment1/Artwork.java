@@ -12,6 +12,7 @@ public class Artwork {
 	private String title;
 	private String acno;
 	private String classification;
+	private int movementCount;
 	List<Contributors> contributors ;
 	List<Movement> movements ;
 	@Override
@@ -30,7 +31,7 @@ public class Artwork {
 	public void setMovements(List<Movement> movements) {
 		this.movements = movements;
 	}
-
+	
 	public String getClassification() {
 		return classification;
 	}
@@ -63,6 +64,13 @@ public class Artwork {
 		this.title = title;
 	}
 	
-	
+
+	public void setMovementCount(int movementCount) {
+		this.movementCount = movementCount;
+	}
+
+	public int getMovementCount() {
+		return movementCount;
+	}
 
 }

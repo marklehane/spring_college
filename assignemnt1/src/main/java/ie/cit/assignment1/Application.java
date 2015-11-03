@@ -42,7 +42,10 @@ public class Application {
 			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
 			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository(getDataSource());
 			artworksaver.saveOrUpdate(artwork);
-			artworksaver.addMovement(artwork.movements, artwork.getAcno());
+			if (artwork.getMovementCount() !=0)
+			{
+				artworksaver.addMovement(artwork.movements, artwork.getAcno());
+			}
 			artworksaver.addArtists(artwork.getContributors(), artwork.getAcno());
 
 			System.out.println("\n---------------------------\nArtist");
