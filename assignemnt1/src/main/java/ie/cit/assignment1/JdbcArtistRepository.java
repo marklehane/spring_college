@@ -1,5 +1,6 @@
 package ie.cit.assignment1;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,16 +8,19 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 public class JdbcArtistRepository implements ArtistDao {
  
-    private SimpleJdbcInsert jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
 
     public JdbcArtistRepository(DataSource dataSource) {
-    	this.jdbcTemplate = new SimpleJdbcInsert(dataSource);
+    	this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
  
   
@@ -29,23 +33,29 @@ public class JdbcArtistRepository implements ArtistDao {
 
 	@Override
 	public void saveOrUpdate(Artist artist) {
-		// insert
-		jdbcTemplate.withTableName("artists");
 
-		List insertList = new ArrayList();
-		insertList.add("id");
-		insertList.add("fullname");
-		insertList.add("gender");
-		jdbcTemplate.setColumnNames(insertList);
+		
+		 String insertSql1 ;
+		insertSql1 ="insert into artists values(?,?,?)";
+		try {
+        jdbcTemplate.update(insertSql1,new Object[]{artist.getId(),artist.getFullName(), artist.getGender()});
+		}
+		catch(Exception e)
+		    {
+		        System.out.println(e);
+		    }
+		
+		 String insertSql2 ;
+			insertSql2 ="insert into birth values(?,?,?)";
+			try {
+	        jdbcTemplate.update(insertSql2,new Object[]{artist.getBirthYear(),artist.getId(), artist.getBirth().getPlace().getPlaceName()});
+			}
+			catch(Exception e)
+			    {
+			        System.out.println(e);
+			    }
 		
 		
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("id", artist.getId()); 
-		parameters.put("fullname", artist.getFullName());
-		parameters.put("gender", artist.getGender());
-		Number key = jdbcTemplate.execute(new MapSqlParameterSource(parameters));
-		
-	
 
 		
 	}

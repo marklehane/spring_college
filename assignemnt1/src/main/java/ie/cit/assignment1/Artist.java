@@ -17,6 +17,7 @@ public class Artist  {
 	private Birth birth;
 	private int birthYear;
 	private long id;
+	private String placeName;
 	private int totalWorks;
 	@JsonProperty("fc")
 	private String fullName;
@@ -38,6 +39,14 @@ public class Artist  {
 	}
 	
 
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = getPlaceName();
+	}
 
 	public Birth getBirth() {
 		return birth;
