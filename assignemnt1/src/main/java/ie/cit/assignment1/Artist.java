@@ -49,6 +49,7 @@ public class Artist  {
 	}
 
 	public Birth getBirth() {
+		
 		return birth;
 	}
 

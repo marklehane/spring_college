@@ -19,7 +19,9 @@ public class Birth {
 	}
 	@Override
     public String toString() {
+		
         return  place.toString() ;
+		
     }
 
 	 

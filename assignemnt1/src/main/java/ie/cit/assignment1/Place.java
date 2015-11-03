@@ -14,7 +14,7 @@ public class Place {
 	
 	@Override
     public String toString() {
-        return   name  +  " "+ placeName +" -- " + placeType ;
+        return   name +  " "+ placeName +" -- " + placeType ;
     }
 
 	public String getName() {
@@ -22,15 +22,21 @@ public class Place {
 	}
 	
 	public void setName(String name) {
-		this.name = name;
+	
+			this.name = name;
+	
+	
 	}
 	
 	public String getPlaceName() {
+		
 		return placeName;
 	}
 	
 	public void setPlaceName(String placeName) {
+	
 		this.placeName = placeName;
+
 	}
 
 	public String getPlaceType() {
@@ -38,7 +44,9 @@ public class Place {
 	}
 	
 	public void setPlaceType(String placeType) {
+
 		this.placeType = placeType;
+
 	}
 	
 	

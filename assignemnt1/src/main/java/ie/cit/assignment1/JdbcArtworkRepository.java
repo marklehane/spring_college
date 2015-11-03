@@ -58,7 +58,7 @@ public class JdbcArtworkRepository implements ArtworkDao {
 	@Override
     public void addMovement(List<Movement> movements, String artistId) {
         // implementation details goes here...
-		
+		if(movements != null){
 		for (int i = 0; i < movements.size(); i++) {
 		    Movement m = movements.get(i);
 		    
@@ -82,12 +82,13 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			        //System.out.println(e);
 			    }
 		}
+		}
 	}
 	
 	@Override
     public void addArtists(List<Contributors> contributors, String artworkId) {
         // implementation details goes here...
-		
+		if (!contributors.isEmpty()){
 		for (int i = 0; i < contributors.size(); i++) {
 		    Contributors m = contributors.get(i);
 		    
@@ -103,5 +104,6 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		    
 			
 	}
+		}
 }
 }
