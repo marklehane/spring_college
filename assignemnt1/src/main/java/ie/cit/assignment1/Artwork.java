@@ -12,7 +12,7 @@ public class Artwork {
 	
 	
 	private String classification;
-	List<contributors> contributors ;
+	List<Contributors> contributors ;
 	List<Movement> movements ;
 	@Override
 	public String toString() {
@@ -39,11 +39,11 @@ public class Artwork {
 		this.classification = classification;
 	}
 
-	public List<contributors> getContributors() {
+	public List<Contributors> getContributors() {
 		return contributors;
 	}
 
-	public void setContributors(List<contributors> contributors) {
+	public void setContributors(List<Contributors> contributors) {
 		this.contributors = contributors;
 	}
 	

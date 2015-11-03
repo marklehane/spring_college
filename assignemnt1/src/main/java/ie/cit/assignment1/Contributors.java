@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SpringBootApplication
-public class contributors {
+public class Contributors {
 	
 	private long id ;
 

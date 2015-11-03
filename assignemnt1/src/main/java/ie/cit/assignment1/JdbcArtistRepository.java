@@ -31,22 +31,21 @@ public class JdbcArtistRepository implements ArtistDao {
 	public void saveOrUpdate(Artist artist) {
 		// insert
 		jdbcTemplate.withTableName("artists");
-		jdbcTemplate.setGeneratedKeyName("id");
+
 		List insertList = new ArrayList();
+		insertList.add("id");
 		insertList.add("fullname");
 		insertList.add("gender");
 		jdbcTemplate.setColumnNames(insertList);
 		
 		
 		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("id", artist.getId()); 
 		parameters.put("fullname", artist.getFullName());
 		parameters.put("gender", artist.getGender());
-		Number key = jdbcTemplate.executeAndReturnKey(new MapSqlParameterSource(parameters));
+		Number key = jdbcTemplate.execute(new MapSqlParameterSource(parameters));
 		
-		if (key != null){
-		    artist.setId(key.longValue());
-
-		}
+	
 
 		
 	}
