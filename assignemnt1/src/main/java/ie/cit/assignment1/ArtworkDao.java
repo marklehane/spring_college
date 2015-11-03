@@ -11,4 +11,11 @@ public interface ArtworkDao {
     public Artwork get(int Id);
      
     public List<Artwork> list();
+
+	void addMovement(List<Movement> movements, String artworkId);
+
+
+	void addArtists(List<Contributors> contributors, String artworkId);
 }
+
+

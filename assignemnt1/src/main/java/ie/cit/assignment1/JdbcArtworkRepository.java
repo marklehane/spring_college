@@ -32,13 +32,13 @@ public class JdbcArtworkRepository implements ArtworkDao {
 	public void saveOrUpdate(Artwork artwork) {
 		
 		String insertSql1 ;
-		insertSql1 ="insert into artists values(?)";
+		insertSql1 ="insert into artworks values(?,?)";
 		try {
-        jdbcTemplate.update(insertSql1,new Object[]{artwork.getContributors()});
+        jdbcTemplate.update(insertSql1,new Object[]{artwork.getAcno(),artwork.getTitle()});
 		}
 		catch(Exception e)
 		    {
-		        System.out.println(e);
+		       // System.out.println(e);
 		    }
 	}
 
@@ -53,5 +53,55 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
- 
+	
+	
+	@Override
+    public void addMovement(List<Movement> movements, String artistId) {
+        // implementation details goes here...
+		
+		for (int i = 0; i < movements.size(); i++) {
+		    Movement m = movements.get(i);
+		    
+		    String insertSql1 ;
+			insertSql1 ="insert into movements values(?,?)";
+			try {
+	        jdbcTemplate.update(insertSql1,new Object[]{m.getId(),m.getName()});
+			}
+			catch(Exception e)
+			    {
+			       // System.out.println(e);
+			    }
+		    
+			String insertSql2 ;
+			insertSql2 ="insert into artwork_movements values(?,?)";
+			try {
+	        jdbcTemplate.update(insertSql2,new Object[]{artistId,m.getId()});
+			}
+			catch(Exception e)
+			    {
+			        //System.out.println(e);
+			    }
+		}
+	}
+	
+	@Override
+    public void addArtists(List<Contributors> contributors, String artworkId) {
+        // implementation details goes here...
+		
+		for (int i = 0; i < contributors.size(); i++) {
+		    Contributors m = contributors.get(i);
+		    
+		    String insertSql1 ;
+			insertSql1 ="insert into artwork_artist values(?,?)";
+			try {
+	        jdbcTemplate.update(insertSql1,new Object[]{artworkId,m.getId()});
+			}
+			catch(Exception e)
+			    {
+			        //System.out.println(e);
+			    }
+		    
+			
+	}
+}
 }

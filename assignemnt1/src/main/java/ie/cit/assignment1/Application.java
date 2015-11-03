@@ -42,9 +42,14 @@ public class Application {
 			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
 			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository(getDataSource());
 			artworksaver.saveOrUpdate(artwork);
-				
-			System.out.println("\n" + artist.toString());
+			artworksaver.addMovement(artwork.movements, artwork.getAcno());
+			artworksaver.addArtists(artwork.getContributors(), artwork.getAcno());
+
+			System.out.println("\n---------------------------\nArtist");
+			System.out.println(  artist.toString());
+			System.out.println("\n---------------------------\nArtwork");
 			System.out.println("\n" + artwork.toString());
+			System.out.println("\n---------------------------");
 			
 		} catch (JsonParseException e) {
 			

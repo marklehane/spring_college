@@ -26,7 +26,7 @@ public class Artist  {
 	@Override
 	public String toString() {
 		
-		return "ID:  " + id + "Name: " + fullName + "\nBorn: " + birthYear +  "\nBirth: " + birth + "\nGender: " + gender + "\nTotal Works: " + totalWorks  +"\nMovements:"+ movements ;
+		return "ID:  " + id + "\nName: " + fullName + "\nBorn: " + birthYear +  "\nBirth: " + birth + "\nGender: " + gender + "\nTotal Works: " + totalWorks  +"\nMovements:"+ movements ;
 		
 	}
 

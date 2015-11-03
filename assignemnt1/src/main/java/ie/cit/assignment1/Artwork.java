@@ -9,15 +9,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SpringBootApplication
 public class Artwork {
-	
-	
+	private String title;
+	private String acno;
 	private String classification;
 	List<Contributors> contributors ;
 	List<Movement> movements ;
 	@Override
 	public String toString() {
 			
-		String artworkAsString = "Classification: " + classification +"\nMovements:"+ movements +"\n Contributors:"+ contributors;
+		String artworkAsString = "Id: " + acno +"\nTitle: " + title +"\nClassification: " + classification +"\nMovements:"+ movements +"\nContributors ID's:"+ contributors;
 		
 		return artworkAsString;
 		
@@ -45,6 +45,22 @@ public class Artwork {
 
 	public void setContributors(List<Contributors> contributors) {
 		this.contributors = contributors;
+	}
+
+	public String getAcno() {
+		return acno;
+	}
+
+	public void setAcno(String acno) {
+		this.acno = acno;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

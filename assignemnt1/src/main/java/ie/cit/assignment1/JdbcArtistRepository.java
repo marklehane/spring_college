@@ -42,17 +42,17 @@ public class JdbcArtistRepository implements ArtistDao {
 		}
 		catch(Exception e)
 		    {
-		        System.out.println(e);
+		        //System.out.println(e);
 		    }
 		
 		 String insertSql2 ;
-			insertSql2 ="insert into birth values(?,?,?)";
+			insertSql2 ="insert into birth values(?,?,?,?)";
 			try {
-	        jdbcTemplate.update(insertSql2,new Object[]{artist.getBirthYear(),artist.getId(), artist.getBirth().getPlace().getPlaceName()});
+	        jdbcTemplate.update(insertSql2,new Object[]{artist.getId(),artist.getBirthYear(),artist.getBirth().getPlace().getPlaceName(), artist.getId()});
 			}
 			catch(Exception e)
 			    {
-			        System.out.println(e);
+			        //System.out.println(e);
 			    }
 		
 	}
@@ -83,7 +83,7 @@ public class JdbcArtistRepository implements ArtistDao {
 			}
 			catch(Exception e)
 			    {
-			        System.out.println(e);
+			       // System.out.println(e);
 			    }
 		    
 			String insertSql2 ;
@@ -93,9 +93,11 @@ public class JdbcArtistRepository implements ArtistDao {
 			}
 			catch(Exception e)
 			    {
-			        System.out.println(e);
+			       // System.out.println(e);
 			    }
 		}
 	}
+	
+	
 }
  
