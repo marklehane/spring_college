@@ -1,38 +1,57 @@
 package ie.cit.assignment1;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-@SpringBootApplication
-public class JdbcArtworkRepository implements CommandLineRunner {
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
-	
+public class JdbcArtworkRepository implements ArtworkDao {
+ 
+    private JdbcTemplate jdbcTemplate;
+
+
+    public JdbcArtworkRepository(DataSource dataSource) {
+    	this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+ 
+    @Override
+    public void delete(int contactId) {
+        // implementation details goes here...
+    }
+ 
 	@Override
-	public void run(String... arg0) throws Exception {
-		query01();
-	}
-	
-	public void query01() {
-		// Query for a list of maps with key-value pairs
-		// The hard way!!!
-			
-		System.out.println("\nQuery 1 (List all artists using resultset Map)\n----------------");
-			
-		String sql = "SELECT * FROM artworks";
-		List<Map<String, Object>> resultSet = jdbcTemplate.queryForList(sql);
-			
-		for (Map<String, Object> row : resultSet) {
-			System.out.println("ID: " + row.get("artwork_id"));
-			System.out.println("Name: " + row.get("name"));
-			System.out.println("Artist: " + row.get("artist") + "\n");
+	public void saveOrUpdate(Artwork artwork) {
+		
+		String insertSql1 ;
+		insertSql1 ="insert into artists values(?)";
+		try {
+        jdbcTemplate.update(insertSql1,new Object[]{artwork.getContributors()});
 		}
+		catch(Exception e)
+		    {
+		        System.out.println(e);
+		    }
 	}
+
+	@Override
+	public Artwork get(int Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Artwork> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
 }

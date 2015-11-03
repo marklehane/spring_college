@@ -38,8 +38,9 @@ public class Application {
 			artistworksaver.saveOrUpdate(artist);
 		
 			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
-			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository() ;
-
+			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository(getDataSource());
+			artworksaver.saveOrUpdate(artwork);
+				
 			System.out.println("\n" + artist.toString());
 			System.out.println("\n" + artwork.toString());
 			

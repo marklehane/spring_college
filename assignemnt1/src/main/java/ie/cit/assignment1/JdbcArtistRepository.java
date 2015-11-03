@@ -55,9 +55,6 @@ public class JdbcArtistRepository implements ArtistDao {
 			        System.out.println(e);
 			    }
 		
-		
-
-		
 	}
 
 	@Override
