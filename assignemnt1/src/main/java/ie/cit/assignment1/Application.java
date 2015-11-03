@@ -36,7 +36,9 @@ public class Application {
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
 			JdbcArtistRepository artistworksaver = new JdbcArtistRepository(getDataSource()) ;
 			artistworksaver.saveOrUpdate(artist);
-		
+			
+			artistworksaver.addMovement(artist.movements, artist.getId());
+			
 			Artwork artwork = new ObjectMapper().readValue(new File(artworkFile), Artwork.class);
 			JdbcArtworkRepository artworksaver = new JdbcArtworkRepository(getDataSource());
 			artworksaver.saveOrUpdate(artwork);

@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @SpringBootApplication
 public class Movement {
 	
-	private String name ;
+	private String name;
+	private int id;
 
 	@Override
     public String toString() {
-        return  name ;
+        return  name + '(' + id + ')'  ;
     }
 
 	public String getName() {
@@ -22,6 +23,14 @@ public class Movement {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

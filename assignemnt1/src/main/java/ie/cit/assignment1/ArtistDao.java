@@ -11,4 +11,6 @@ public interface ArtistDao {
     public Artist get(int Id);
      
     public List<Artist> list();
+
+	void addMovement(List<Movement> movements, long artistId);
 }

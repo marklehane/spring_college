@@ -68,5 +68,34 @@ public class JdbcArtistRepository implements ArtistDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
- 
+	
+	@Override
+    public void addMovement(List<Movement> movements, long artistId) {
+        // implementation details goes here...
+		
+		for (int i = 0; i < movements.size(); i++) {
+		    Movement m = movements.get(i);
+		    
+		    String insertSql1 ;
+			insertSql1 ="insert into movements values(?,?)";
+			try {
+	        jdbcTemplate.update(insertSql1,new Object[]{m.getId(),m.getName()});
+			}
+			catch(Exception e)
+			    {
+			        System.out.println(e);
+			    }
+		    
+			String insertSql2 ;
+			insertSql2 ="insert into artist_movements values(?,?)";
+			try {
+	        jdbcTemplate.update(insertSql2,new Object[]{m.getId(),artistId});
+			}
+			catch(Exception e)
+			    {
+			        System.out.println(e);
+			    }
+		}
+	}
 }
+ 
