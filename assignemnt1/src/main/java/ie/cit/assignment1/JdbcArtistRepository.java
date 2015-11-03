@@ -76,15 +76,22 @@ public class JdbcArtistRepository implements ArtistDao {
 		for (int i = 0; i < movements.size(); i++) {
 		    Movement m = movements.get(i);
 		    
-		    String insertSql1 ;
-			insertSql1 ="insert into movements values(?,?)";
-			try {
-	        jdbcTemplate.update(insertSql1,new Object[]{m.getId(),m.getName()});
-			}
-			catch(Exception e)
-			    {
-			       // System.out.println(e);
-			    }
+		    //count number of rows in movements table with movements id to see if it is already in table
+		    int rowCount = this.jdbcTemplate.queryForObject("select count(*) from movements where id = " + m.getId(), Integer.class);
+		    
+		    //if movement count is 0 then movement doesn't exist already so add it
+		    if (rowCount == 0)
+		    {
+			    String insertSql1 ;
+				insertSql1 ="insert into movements values(?,?)";
+				try {
+		        jdbcTemplate.update(insertSql1,new Object[]{m.getId(),m.getName()});
+				}
+				catch(Exception e)
+				    {
+				       // System.out.println(e);
+				    }
+		    }
 		    
 			String insertSql2 ;
 			insertSql2 ="insert into artist_movements values(?,?)";
