@@ -1,10 +1,23 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
 </head>
 <body>
-<h1> Test</h1>
+
+
+<table>
+    <tr>
+  
+        <td >id</td>
+        <td >Gender</td>
+    </tr>
+<tr th:each="message : ${artist}">
+    <td th:text="${message.id}">1</td>
+   
+    <td th:text="${message.gender}">Text ...</td>
+</tr>
+</table>
 
 </body>
 

@@ -65,8 +65,24 @@ public class JdbcArtistRepository implements ArtistDao {
 
 	@Override
 	public List<Artist> list() {
-		// TODO Auto-generated method stub
-		return null;
+		String insertSql2 ;
+		insertSql2 ="SELECT * FROM `artists` LIMIT 40";
+		List<Artist> artists = new ArrayList<Artist>();
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql2);
+		for (Map row : rows) {
+			Artist artist = new Artist();
+			artist.setId((Integer)(row.get("id")));
+			artist.setFullName((String)(row.get("fullname")));
+			artist.setGender((String)(row.get("gender")));
+			artists.add(artist);
+		}
+			
+		return artists;
+		
+		
+		
+		
 	}
 	
 	@Override
