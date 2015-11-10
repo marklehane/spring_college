@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+<body>
+
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th >Name</th>
+    </tr>
+    <tr th:each="message : artwork">
+	    <td ><a href="" th:href="@{'artwork' + ${message.artwork_id}}" th:text="${message.name}"></a></td>
+	</tr>
+</table>
+
+</body>
+
+
+
+
+</html>

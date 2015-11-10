@@ -41,6 +41,24 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		       // System.out.println(e);
 		    }
 	}
+	
+	public List<Artwork> list1() {
+		String insertSql1 ;
+		insertSql1 ="SELECT * FROM `artworks` LIMIT 40";
+		List<Artwork> artworks = new ArrayList<Artwork>();
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql1);
+		for (Map row : rows) {
+			Artwork artwork = new Artwork();
+			artwork.setAcno((String)(row.get("artwork_id")));
+			artwork.setTitle((String)(row.get("name")));
+			artworks.add(artwork);
+		}
+			
+		return artworks;
+
+	}
+	
 
 	@Override
 	public Artwork get(int Id) {

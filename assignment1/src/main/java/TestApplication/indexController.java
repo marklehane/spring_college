@@ -21,6 +21,12 @@ String index(){
 	return "index";
 }
 
+@RequestMapping("/artwork")
+String artwork(){
+
+	return "artwork";
+}
+
 
 @ModelAttribute("artist")
 public String artists(Locale locale, Model model){
