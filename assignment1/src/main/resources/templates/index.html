@@ -6,14 +6,16 @@
 <body>
 
 
-<table>
+<table border="1">
     <tr>
   
-        <td >id</td>
-        <td >Gender</td>
+        <th>id</th>
+        <th >FullName</th>
+        <th >Gender</th>
     </tr>
 <tr th:each="message : ${artist}">
     <td th:text="${message.id}">1</td>
+       <td th:text="${message.FullName}">Text ...</td>
    
     <td th:text="${message.gender}">Text ...</td>
 </tr>
