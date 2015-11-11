@@ -56,6 +56,8 @@ public class JdbcArtistRepository implements ArtistDao {
 			    }
 		
 	}
+	
+
 
 	@Override
 	public Artist get(int artistId) {
@@ -70,9 +72,21 @@ public class JdbcArtistRepository implements ArtistDao {
 		for (Map row : rows) {
 			artist.setId((Integer)(row.get("id")));
 			artist.setFullName((String)(row.get("fullname")));
+		
 			artist.setGender((String)(row.get("gender")));
-			artist.setPlaceName((String)(row.get("place")));
-			artist.setBirthYear((Integer)(row.get("date")));
+	if (row.get("place") == null ){
+		artist.setPlaceName((String)("No Data Availiable "));
+			}else{
+				artist.setPlaceName((String)(row.get("place")));
+			}
+	
+	if (row.get("date") == null ){
+		artist.setBirthYear((Integer)(0000));
+			}else{
+				artist.setBirthYear((Integer)(row.get("date")));
+			}
+			
+			
 		}
 		
 		String insertSql2;

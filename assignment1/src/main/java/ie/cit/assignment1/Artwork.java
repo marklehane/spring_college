@@ -13,6 +13,8 @@ public class Artwork {
 	private String acno;
 	private String classification;
 	private int movementCount;
+	private Artist artist;
+	private String artistName;
 	List<Contributors> contributors ;
 	List<Movement> movements ;
 	@Override
@@ -72,5 +74,23 @@ public class Artwork {
 	public int getMovementCount() {
 		return movementCount;
 	}
+
+	public Artist getArtist() {
+		return artist;
+	}
+
+	public void setArtist(Artist artist) {
+		this.artist = artist;
+	}
+
+	public String getArtistName() {
+		return artistName;
+	}
+
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
+	}
+	
+
 
 }

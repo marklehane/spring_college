@@ -8,12 +8,16 @@
 
 <table border="1">
     <tr>
-        <th>ID</th>
-        <th >Name</th>
+  
+        <th>id</th>
+        <th >Artwork Name</th>
+        <th >Artist Name</th>
     </tr>
-    <tr th:each="message : artwork">
-	    <td ><a href="" th:href="@{'artwork' + ${message.artwork_id}}" th:text="${message.name}"></a></td>
-	</tr>
+    <tr th:each="message : ${artwork}">
+    <td th:text="${message.acno}">Text ...</td>
+    <td ><a href="" th:href="@{'/artwork/' + ${message.acno}}" th:text="${message.title}"></a></td>
+    <td th:text="${message.artistName}">Text ...</td>
+</tr>
 </table>
 
 </body>

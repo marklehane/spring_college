@@ -13,6 +13,7 @@ import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class JdbcArtworkRepository implements ArtworkDao {
  
@@ -38,26 +39,10 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		}
 		catch(Exception e)
 		    {
-		       // System.out.println(e);
-		    }
+		        		    }
 	}
 	
-	public List<Artwork> list1() {
-		String insertSql1 ;
-		insertSql1 ="SELECT * FROM `artworks` LIMIT 40";
-		List<Artwork> artworks = new ArrayList<Artwork>();
-		
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql1);
-		for (Map row : rows) {
-			Artwork artwork = new Artwork();
-			artwork.setAcno((String)(row.get("artwork_id")));
-			artwork.setTitle((String)(row.get("name")));
-			artworks.add(artwork);
-		}
-			
-		return artworks;
 
-	}
 	
 
 	@Override
@@ -68,8 +53,36 @@ public class JdbcArtworkRepository implements ArtworkDao {
 
 	@Override
 	public List<Artwork> list() {
-		// TODO Auto-generated method stub
-		return null;
+		String insertSql1 ;
+		insertSql1 ="SELECT artworks.*, artwork_artist.artist_id FROM artworks left join Artwork_artist on artworks.artwork_id = artwork_artist.artwork_id limit 40"
+;
+		List<Artwork> artworks = new ArrayList<Artwork>();
+
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql1);
+		for (Map row : rows) {
+			Artwork artwork = new Artwork();
+			artwork.setAcno((String)(row.get("artwork_id")));
+			artwork.setTitle((String)(row.get("name")));
+			artwork.setArtistName(getArtistName((Integer)(row.get("artist_id"))));
+			artworks.add(artwork);
+		}
+		
+		
+			
+		return artworks;
+	}
+	
+	public String getArtistName(int artistID){
+		String selectSql = "SELECT fullname FROM `artists` WHERE id = '" + artistID + "'";
+		
+		 List<String> name = jdbcTemplate.queryForList(selectSql, String.class); 
+		    if (name.isEmpty()) {
+		        return null;
+		    } else {
+		        return name.get(0);
+		    }
+		
+
 	}
 	
 	
@@ -124,4 +137,13 @@ public class JdbcArtworkRepository implements ArtworkDao {
 	}
 		}
 }
+	
+	public static DriverManagerDataSource getDataSource() {
+	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	    dataSource.setUrl("jdbc:mysql://localhost/assignment1");
+	    dataSource.setUsername("root");
+	    dataSource.setPassword("");
+	    return dataSource;
+	}
 }

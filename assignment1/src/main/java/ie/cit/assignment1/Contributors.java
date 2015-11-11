@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Contributors {
 	
 	private long id ;
+	private String fc;
 
 	@Override
     public String toString() {
@@ -22,6 +23,14 @@ public class Contributors {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getFc() {
+		return fc;
+	}
+
+	public void setFc(String fc) {
+		this.fc = fc;
 	}
 
 	

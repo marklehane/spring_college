@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ie.cit.assignment1.Artist;
+import ie.cit.assignment1.Artwork;
 import ie.cit.assignment1.JdbcArtistRepository;
+import ie.cit.assignment1.JdbcArtworkRepository;
 @Controller
 public class indexController {
 	
@@ -39,6 +41,15 @@ String artist(Locale locale, Model model, @PathVariable("id") int id){
 String artwork(){
 
 	return "artwork";
+}
+
+@ModelAttribute("artwork")
+public String artworks(Locale locale, Model model){
+	JdbcArtworkRepository test = new JdbcArtworkRepository(getDataSource()) ;
+	List<Artwork> artwork = test.list();
+	 model.addAttribute("artwork", artwork);
+return "artwork";
+	
 }
 
 
