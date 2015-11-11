@@ -4,7 +4,8 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
+<div class="container">
+    <div class="row row-centered">
 
     <p>Name: <span th:text="${singleArtist.FullName}">Text ...</span></p>
     <p>Gender: <span th:text="${singleArtist.gender}">Text ...</span></p>
@@ -32,13 +33,14 @@
     
     <div th:each="message3, iterationStatus : ${singleArtist.artworks}">
     <p>------------------- <span th:text="${iterationStatus.count}">1</span> ---------------------------</p>
-    	image?
+    	
     	<p>Artwork id: <span th:text="${message3.acno}">Text ...</span></p>
     	<p>Artwork Title: <a href="" th:href="@{'/artwork/' + ${message3.acno}}" th:text="${message3.title}"><span th:text="${message3.title}">Text ...</span></a></p>
     	<p>Artwork Movements: <span th:text="${message3.movements}">Text ...</span></p>
     </div>
     
-
+</div>
+</div>
 </body>
 
 
