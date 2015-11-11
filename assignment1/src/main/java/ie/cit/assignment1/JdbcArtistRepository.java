@@ -58,10 +58,79 @@ public class JdbcArtistRepository implements ArtistDao {
 	}
 
 	@Override
-	public Artist get(int contactId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Artist get(int artistId) {
+		String insertSql;
+		insertSql ="SELECT artists.*, birth.* "
+				+ "FROM artists LEFT JOIN birth "
+				+ "on artists.id = birth.artist_id "
+				+ "where artists.id = '" + artistId + "'";
+		Artist artist = new Artist();
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql);
+		for (Map row : rows) {
+			artist.setId((Integer)(row.get("id")));
+			artist.setFullName((String)(row.get("fullname")));
+			artist.setGender((String)(row.get("gender")));
+			artist.setPlaceName((String)(row.get("place")));
+			artist.setBirthYear((Integer)(row.get("date")));
+		}
+		
+		String insertSql2;
+		insertSql2 ="SELECT movements.*, artist_movements.* "
+				+ "FROM artist_movements INNER JOIN movements "
+				+ "on artist_movements.movement_Id = movements.id "
+				+ "where artist_movements.artist_id = '" + artistId + "'";
+		
+		List<Movement> movements = new ArrayList<Movement>();
+		
+		List<Map<String, Object>> rows2 = jdbcTemplate.queryForList(insertSql2);
+		for (Map row : rows2) {
+			Movement movement = new Movement();
+			movement.setId((Integer)(row.get("id")));
+			movement.setName((String)(row.get("name")));
+			movements.add(movement);
+		}
+		
+		String insertSql3;
+		insertSql3 ="SELECT artworks.*, artwork_artist.* "
+				+ "FROM artworks INNER JOIN artwork_artist "
+				+ "on artwork_artist.artwork_id = artworks.artwork_id "
+				+ "where artwork_artist.artist_id = '" + artistId + "'";
+		
+		List<Artwork> artworks = new ArrayList<Artwork>();
+		
+		List<Map<String, Object>> rows3 = jdbcTemplate.queryForList(insertSql3);
+		for (Map row : rows3) 
+		{
+			Artwork artwork = new Artwork();
+			List<Movement> artworkMovements = new ArrayList<Movement>();
+			artwork.setAcno((String)(row.get("artwork_id")));
+			artwork.setTitle((String)(row.get("name")));
+			
+				String insertSql4;
+				insertSql4 ="SELECT movements.*, artwork_movements.* "
+						+ "FROM movements INNER JOIN artwork_movements "
+						+ "on artwork_movements.movement_id = movements.id "
+						+ "where artwork_movements.artwork_id = '" + row.get("artwork_id") + "'";
+				
+				
+				List<Map<String, Object>> rows4 = jdbcTemplate.queryForList(insertSql4);
+				for (Map row1 : rows4) 
+				{
+					Movement artworkMovement = new Movement();
+					artworkMovement.setId((Integer)(row1.get("id")));
+					artworkMovement.setName((String)(row1.get("name")));
+					artworkMovements.add(artworkMovement);
+				}
+			artwork.setMovements(artworkMovements);
+			artworks.add(artwork);
+		}
+		
+		artist.setMovements(movements);
+		artist.setArtworks(artworks);
+		return artist;
 	}
+
 
 	@Override
 	public List<Artist> list() {

@@ -13,7 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootApplication
 public class Artist  {
 	
-	List<Movement> movements ;
+	List<Movement> movements;
+	List<Artwork> artworks;
 	private Birth birth;
 	private int birthYear;
 	private long id;
@@ -39,13 +40,20 @@ public class Artist  {
 	}
 	
 
+	public List<Artwork> getArtworks() {
+		return artworks;
+	}
+
+	public void setArtworks(List<Artwork> artworks) {
+		this.artworks = artworks;
+	}
 
 	public String getPlaceName() {
 		return placeName;
 	}
 
 	public void setPlaceName(String placeName) {
-		this.placeName = getPlaceName();
+		this.placeName = placeName;
 	}
 
 	public Birth getBirth() {

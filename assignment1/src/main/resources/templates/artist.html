@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+<body>
+
+
+    <p>Name: <span th:text="${singleArtist.FullName}">Text ...</span></p>
+    <p>Gender: <span th:text="${singleArtist.gender}">Text ...</span></p>
+    <p>Birth Year: <span th:text="${singleArtist.birthYear}">Text ...</span></p>
+    <p>Birth Place: <span th:text="${singleArtist.placeName}">Text ...</span></p>
+    
+    <p>Movements: </p>
+    <table border="1">
+    <tr>	
+    	<th>id</th>
+    	<th>name</th>
+	</tr>
+    <tr th:each="message1 : ${singleArtist.movements}">
+    	<td th:text="${message1.id}">Text ...</td>
+    	<td th:text="${message1.name}">Text ...</td>
+	</tr>
+    </table>
+    
+    
+    <p>Artworks: </p>
+    
+    <div th:each="message3, iterationStatus : ${singleArtist.artworks}">
+    <p>------------------- <span th:text="${iterationStatus.count}">1</span> ---------------------------</p>
+    	image?
+    	<p>Artwork id: <span th:text="${message3.acno}">Text ...</span></p>
+    	<p>Artwork Title: <span th:text="${message3.title}">Text ...</span></p>
+    	<p>Artwork Movements: <span th:text="${message3.movements}">Text ...</span></p>
+    </div>
+    
+
+</body>
+
+
+
+
+</html>
