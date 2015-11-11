@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
+<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -11,8 +11,10 @@
     <p>Birth Year: <span th:text="${singleArtist.birthYear}">Text ...</span></p>
     <p>Birth Place: <span th:text="${singleArtist.placeName}">Text ...</span></p>
     
-    <p>Movements: </p>
-    <table border="1">
+   
+    
+    <table class="table table-bordered">
+     <caption>Movements</caption>
     <tr>	
     	<th>id</th>
     	<th>name</th>
@@ -22,6 +24,8 @@
     	<td th:text="${message1.name}">Text ...</td>
 	</tr>
     </table>
+
+    <br></br>
     
     
     <p>Artworks:</p>
