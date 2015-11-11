@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+<body>
+
+
+<table border="1">
+    <tr>
+  
+        <th>id</th>
+        <th >FullName</th>
+        <th >Gender</th>
+    </tr>
+    <tr th:each="message : ${artist}">
+    <td th:text="${message.id}">Text ...</td>
+    <td ><a href="" th:href="@{'/artist/' + ${message.id}}" th:text="${message.FullName}"></a></td>
+    <td th:text="${message.gender}">Text ...</td>
+</tr>
+</table>
+
+</body>
+
+
+
+
+</html>

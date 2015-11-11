@@ -19,8 +19,13 @@ public class indexController {
 	
 @RequestMapping("/artist")
 String index(){
-	//JdbcArtistRepository test = new JdbcArtistRepository(getDataSource()) ;
-//List<Artist> artist = test.list();
+
+	return "art";
+}
+
+@RequestMapping("/")
+String main(){
+
 	return "index";
 }
 

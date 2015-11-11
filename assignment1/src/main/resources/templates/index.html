@@ -5,20 +5,9 @@
 </head>
 <body>
 
+<a href="/artist/" ><h1>Artists</h1></a>
 
-<table border="1">
-    <tr>
-  
-        <th>id</th>
-        <th >FullName</th>
-        <th >Gender</th>
-    </tr>
-    <tr th:each="message : ${artist}">
-    <td th:text="${message.id}">Text ...</td>
-    <td ><a href="" th:href="@{'/artist/' + ${message.id}}" th:text="${message.FullName}"></a></td>
-    <td th:text="${message.gender}">Text ...</td>
-</tr>
-</table>
+<a href="/artwork/" ><h1>Artworks</h1></a>
 
 </body>
 
