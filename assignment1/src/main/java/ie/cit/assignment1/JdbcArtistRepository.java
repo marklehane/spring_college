@@ -86,7 +86,6 @@ public class JdbcArtistRepository implements ArtistDao {
 				artist.setBirthYear((Integer)(row.get("date")));
 			}
 			
-			
 		}
 		
 		String insertSql2;

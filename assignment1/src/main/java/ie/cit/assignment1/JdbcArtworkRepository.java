@@ -46,9 +46,54 @@ public class JdbcArtworkRepository implements ArtworkDao {
 	
 
 	@Override
-	public Artwork get(int Id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Artwork get(String Id) {
+		Artwork artwork = new Artwork();
+		Artist artist = new Artist();
+		List<Movement> artworkMovements = new ArrayList<Movement>();
+		
+		String insertSql;
+		insertSql ="SELECT * "
+				+ "FROM artworks "
+				+ "where artwork_id = '" + Id + "'";
+		
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql);
+		for (Map row : rows) {
+			//artist.setId((Integer)(row.get("id")));
+			artwork.setAcno((String)(row.get("artwork_id")));
+			artwork.setTitle((String)(row.get("name")));
+		}
+		
+			String insertSql4;
+			insertSql4 ="SELECT movements.*, artwork_movements.* "
+					+ "FROM movements INNER JOIN artwork_movements "
+					+ "on artwork_movements.movement_id = movements.id "
+					+ "where artwork_movements.artwork_id = '" + Id + "'";
+			
+			
+			List<Map<String, Object>> rows4 = jdbcTemplate.queryForList(insertSql4);
+			for (Map row1 : rows4) 
+			{
+				Movement artworkMovement = new Movement();
+				artworkMovement.setId((Integer)(row1.get("id")));
+				artworkMovement.setName((String)(row1.get("name")));
+				artworkMovements.add(artworkMovement);
+			}
+			
+			String insertSql5;
+			insertSql5 ="SELECT artists.*, artwork_artist.* "
+					+ "FROM artists INNER JOIN artwork_artist "
+					+ "on artwork_artist.artist_id = artists.id "
+					+ "where artwork_artist.artwork_id = '" + Id + "'";
+			
+			List<Map<String, Object>> rows5 = jdbcTemplate.queryForList(insertSql5);
+			for (Map row2 : rows5) 
+			{
+				artist.setFullName((String)(row2.get("fullname")));
+			}
+			
+		artwork.setMovements(artworkMovements);
+		artwork.setArtist(artist);
+		return artwork;
 	}
 
 	@Override

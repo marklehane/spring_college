@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+<body>
+
+
+    <p>Id: <span th:text="${singleArtwork.acno}">Text ...</span></p>
+    <p>Title: <span th:text="${singleArtwork.title}">Text ...</span></p>
+    <p>Artist: <span th:text="${singleArtwork.artist.getFullName()}">Text ...</span></p>
+    
+    <p>Movements: </p>
+    <table border="1">
+    <tr>	
+    	<th>id</th>
+    	<th>name</th>
+	</tr>
+    <tr th:each="message1 : ${singleArtwork.movements}">
+    	<td th:text="${message1.id}">Text ...</td>
+    	<td th:text="${message1.name}">Text ...</td>
+	</tr>
+    </table>
+    
+    
+
+</body>
+
+
+
+
+</html>

@@ -42,6 +42,19 @@ String artist(Locale locale, Model model, @PathVariable("id") int id){
 	return "artist";
 }
 
+
+@RequestMapping("/artwork/{id}")
+String singleArtwork(Locale locale, Model model, @PathVariable("id") String id){
+	 
+//JdbcArtistRepository test = new JdbcArtistRepository(getDataSource()) ;
+//List<Artist> artist = test.list();
+	JdbcArtworkRepository test = new JdbcArtworkRepository(getDataSource());
+	Artwork artwork = test.get(id);
+	model.addAttribute("singleArtwork", artwork);
+	
+	return "singleArtwork";
+}
+
 @RequestMapping("/artwork")
 String artwork(){
 

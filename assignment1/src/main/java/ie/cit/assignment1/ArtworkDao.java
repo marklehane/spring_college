@@ -8,7 +8,7 @@ public interface ArtworkDao {
      
     public void delete(int Id);
      
-    public Artwork get(int Id);
+    public Artwork get(String Id);
      
     public List<Artwork> list();
 
