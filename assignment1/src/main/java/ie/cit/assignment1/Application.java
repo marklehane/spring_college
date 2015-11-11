@@ -3,9 +3,13 @@ package ie.cit.assignment1;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -22,6 +26,26 @@ public class Application {
 	        dataSource.setPassword("");
 	        return dataSource;
 	    }
+	  
+	// Login
+		  @RequestMapping("/login")
+		  public String login() {
+		    return "login.html";
+		  }
+		 
+		  // error
+		  @RequestMapping("/error")
+		  public String error(HttpServletRequest request, Model model) {
+			    model.addAttribute("errorCode", request.getAttribute("javax.servlet.error.status_code"));
+			    Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
+			    String errorMessage = null;
+			    if (throwable != null) {
+			      errorMessage = throwable.getMessage();
+			    }
+			    model.addAttribute("errorMessage", errorMessage);
+			    return "error.html";
+			  }
+		  
 
 	 public static void main(String[] args) {
 	        SpringApplication.run(Application.class, args);
