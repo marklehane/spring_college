@@ -8,7 +8,7 @@
 
     <p>Id: <span th:text="${singleArtwork.acno}">Text ...</span></p>
     <p>Title: <span th:text="${singleArtwork.title}">Text ...</span></p>
-    <p>Artist: <span th:text="${singleArtwork.artist.getFullName()}">Text ...</span></p>
+    <p>Artist: <a href="" th:href="@{'/artist/' + ${singleArtwork.artist.getId()}}" th:text="${singleArtwork.artist.getFullName()}"><span th:text="${singleArtwork.artist.getFullName()}">Text ...</span></a></p>
     
     <p>Movements: </p>
     <table border="1">

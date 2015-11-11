@@ -89,6 +89,7 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			for (Map row2 : rows5) 
 			{
 				artist.setFullName((String)(row2.get("fullname")));
+				artist.setId((Integer)(row2.get("id")));;
 			}
 			
 		artwork.setMovements(artworkMovements);

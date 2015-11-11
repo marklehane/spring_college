@@ -23,6 +23,9 @@ String index(){
 	return "art";
 }
 
+
+
+
 @RequestMapping("/")
 String main(){
 
