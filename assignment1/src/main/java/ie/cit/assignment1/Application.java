@@ -28,23 +28,23 @@ public class Application {
 	    }
 	  
 	// Login
-		  @RequestMapping("/login")
-		  public String login() {
-		    return "login.html";
-		  }
+//		  @RequestMapping("/login")
+//		  public String login() {
+//		    return "login.html";
+//		  }
 		 
 		  // error
-		  @RequestMapping("/error")
-		  public String error(HttpServletRequest request, Model model) {
-			    model.addAttribute("errorCode", request.getAttribute("javax.servlet.error.status_code"));
-			    Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
-			    String errorMessage = null;
-			    if (throwable != null) {
-			      errorMessage = throwable.getMessage();
-			    }
-			    model.addAttribute("errorMessage", errorMessage);
-			    return "error.html";
-			  }
+//		  @RequestMapping("/error")
+//		  public String error(HttpServletRequest request, Model model) {
+//			    model.addAttribute("errorCode", request.getAttribute("javax.servlet.error.status_code"));
+//			    Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
+//			    String errorMessage = null;
+//			    if (throwable != null) {
+//			      errorMessage = throwable.getMessage();
+//			    }
+//			    model.addAttribute("errorMessage", errorMessage);
+//			    return "error.html";
+//			  }
 		  
 
 	 public static void main(String[] args) {
