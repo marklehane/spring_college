@@ -109,7 +109,7 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			Artwork artwork = new Artwork();
 			artwork.setAcno((String)(row.get("artwork_id")));
 			artwork.setTitle((String)(row.get("name")));
-			artwork.setArtistName(getArtistName((Integer)(row.get("artist_id"))));
+			artwork.setArtistName(getArtistName((String)(row.get("artist_id"))));
 			artworks.add(artwork);
 		}
 		
@@ -118,8 +118,8 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		return artworks;
 	}
 	
-	public String getArtistName(int artistID){
-		String selectSql = "SELECT fullname FROM `artists` WHERE id = '" + artistID + "'";
+	public String getArtistName(String string){
+		String selectSql = "SELECT fullname FROM `artists` WHERE id = '" + string + "'";
 		
 		 List<String> name = jdbcTemplate.queryForList(selectSql, String.class); 
 		    if (name.isEmpty()) {
