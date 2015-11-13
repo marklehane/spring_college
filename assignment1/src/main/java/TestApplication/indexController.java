@@ -32,6 +32,11 @@ String main(){
 	return "index";
 }
 
+@RequestMapping("/login")
+String login(){
+
+	return "login";
+}
 
 @RequestMapping("/artist/{id}")
 String artist(Locale locale, Model model, @PathVariable("id") int id){
