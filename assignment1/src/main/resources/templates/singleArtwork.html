@@ -6,9 +6,10 @@
 <body>
 <div class="container">
     <div class="row row-centered">
-
+    <img th:src="${singleArtwork.thumbnailUrl}"/>
     <p>Id: <span th:text="${singleArtwork.acno}">Text ...</span></p>
     <p>Title: <span th:text="${singleArtwork.title}">Text ...</span></p>
+    <p>Medium: <span th:text="${singleArtwork.medium}">Text ...</span></p>
     <p>Artist: <a href="" th:href="@{'/artist/' + ${singleArtwork.artist.getId()}}" th:text="${singleArtwork.artist.getFullName()}"><span th:text="${singleArtwork.artist.getFullName()}">Text ...</span></a></p>
     
     <p>Movements: </p>
