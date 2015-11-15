@@ -11,20 +11,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
-    }
+
     
 public static DriverManagerDataSource getDataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -38,7 +25,10 @@ public static DriverManagerDataSource getDataSource() {
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(getDataSource()).usersByUsernameQuery("SELECT username, password FROM users WHERE username = ? AND password = ?");	
- 
+        auth.jdbcAuthentication()                
+        .dataSource(getDataSource())                
+        .usersByUsernameQuery("select username as principal, password,enabled as credentials from users where username = ?")
+        .authoritiesByUsernameQuery("select username,authority from  authorities where username = ?");
+; 
     }
 }
