@@ -28,7 +28,7 @@ public static DriverManagerDataSource getDataSource() {
         auth.jdbcAuthentication()                
         .dataSource(getDataSource())                
         .usersByUsernameQuery("select username as principal, password,enabled as credentials from users where username = ?")
-        .authoritiesByUsernameQuery("select username,authority from  authorities where username = ?");
+        
 ; 
     }
 }
