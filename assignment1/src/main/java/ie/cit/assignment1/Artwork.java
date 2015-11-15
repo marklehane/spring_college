@@ -15,6 +15,8 @@ public class Artwork {
 	private int movementCount;
 	private Artist artist;
 	private String artistName;
+	private String medium;
+	private String thumbnailUrl;
 	List<Contributors> contributors ;
 	List<Movement> movements ;
 	@Override
@@ -89,6 +91,22 @@ public class Artwork {
 
 	public void setArtistName(String artistName) {
 		this.artistName = artistName;
+	}
+
+	public String getMedium() {
+		return medium;
+	}
+
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}
+
+	public String getThumbnailUrl() {
+		return thumbnailUrl;
+	}
+
+	public void setThumbnailUrl(String thumbnailUrl) {
+		this.thumbnailUrl = thumbnailUrl;
 	}
 	
 

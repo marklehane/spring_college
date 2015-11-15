@@ -61,6 +61,9 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			//artist.setId((Integer)(row.get("id")));
 			artwork.setAcno((String)(row.get("artwork_id")));
 			artwork.setTitle((String)(row.get("name")));
+			artwork.setTitle((String)(row.get("thumbnailUrl")));
+			artwork.setTitle((String)(row.get("medium")));
+			
 		}
 		
 			String insertSql4;
@@ -109,6 +112,8 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			Artwork artwork = new Artwork();
 			artwork.setAcno((String)(row.get("artwork_id")));
 			artwork.setTitle((String)(row.get("name")));
+			artwork.setTitle((String)(row.get("thumbnailUrl")));
+			artwork.setTitle((String)(row.get("medium")));
 			artwork.setArtistName(getArtistName((String)(row.get("artist_id"))));
 			artworks.add(artwork);
 		}

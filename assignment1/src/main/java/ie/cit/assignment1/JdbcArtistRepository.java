@@ -119,6 +119,8 @@ public class JdbcArtistRepository implements ArtistDao {
 			List<Movement> artworkMovements = new ArrayList<Movement>();
 			artwork.setAcno((String)(row.get("artwork_id")));
 			artwork.setTitle((String)(row.get("name")));
+			artwork.setThumbnailUrl((String)(row.get("thumbnailUrl")));
+			artwork.setMedium((String)(row.get("medium")));
 			
 				String insertSql4;
 				insertSql4 ="SELECT movements.*, artwork_movements.* "
