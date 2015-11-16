@@ -3,7 +3,7 @@ package ie.cit.assignment1;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,6 +19,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public class JdbcArtworkRepository implements ArtworkDao {
  
@@ -164,9 +166,23 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		Date today = Calendar.getInstance().getTime();
 		String insertSql1 ;
 		insertSql1 ="insert into comment values(?,?,?,?,?,?)";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username ; 
+		
+		if (principal instanceof UserDetails) {
+		
+		   username = ((UserDetails)principal).getUsername();
+		
+		} else {
+		
+		   username = principal.toString();
+		
+		}
+
+		
 		try 
 		{
-			jdbcTemplate.update(insertSql1,new Object[]{0, artworkId, comment, "username", today, today});
+			jdbcTemplate.update(insertSql1,new Object[]{0, artworkId, comment, username, today, today});
 		}
 		catch(Exception e)
 		    {

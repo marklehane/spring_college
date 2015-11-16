@@ -150,7 +150,7 @@ public class JdbcArtistRepository implements ArtistDao {
 	@Override
 	public List<Artist> list() {
 		String insertSql2 ;
-		insertSql2 ="SELECT * FROM `artists` LIMIT 40";
+		insertSql2 ="SELECT * FROM `artists` ORDER BY RAND() LIMIT 40";
 		List<Artist> artists = new ArrayList<Artist>();
 		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(insertSql2);
