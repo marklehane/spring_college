@@ -11,7 +11,16 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+	@Override
+	  protected void configure(HttpSecurity http) throws Exception {
+	    http.authorizeRequests()
+	        .antMatchers("/**","/artist/").permitAll() // #4
+	        .anyRequest().authenticated() // 7
+	        .and()
+	    .formLogin()  // #8
+	       .loginPage("/login") // #9
+	        .permitAll().and().logout().logoutUrl("/logout");
+	  }
     
 public static DriverManagerDataSource getDataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();

@@ -1,20 +1,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<link href="/css/nav.css" rel="stylesheet" type="text/css"/>
+
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"></input>
-</form>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Tate gallery</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li ><a href="/artist/" >Artists</a>
+</li>
+        <li class="active"><a href="/artwork/" >Artworks</a></li> 
+        			<li sec:authorize="hasRole('user')">
+     <a href="/login?logout" ><span sec:authentication="name">Bob</span>: Logout</a>
+</li>
+<li sec:authorize="!hasRole('user')">
+   <a href="/login" >Login</a>
+</li> 
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<ul>
-  <li><a href="/" ><h1>Home</h1></a></li>
-  <li><a href="/artist/" ><h1>Artists</h1></a></li>
-  <li><a href="/artwork/" ><h1>Artworks</h1></a></li>
-</ul>
+
+
+
 
 <table class="table table-striped">
     <tr>

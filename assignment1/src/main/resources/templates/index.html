@@ -1,21 +1,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link href="/css/nav.css" rel="stylesheet" type="text/css"/>
+
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Tate gallery</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/artist/" >Artists</a>
+</li>
+        <li><a href="/artwork/" >Artworks</a></li> 
+     
+	
+			<li sec:authorize="hasRole('user')">
+     <a href="/login?logout" ><span sec:authentication="name">Bob</span>: Logout</a>
+</li>
+<li sec:authorize="!hasRole('user')">
+   <a href="/login" >Login</a>
+</li>
+        
+        
+  
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<form  th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout"></input>
-</form>
 
-<ul>
-  <li><a href="/" ><h1>Home</h1></a></li>
-  <li><a href="/artist/" ><h1>Artists</h1></a></li>
-  <li><a href="/artwork/" ><h1>Artworks</h1></a></li>
-</ul>
+<h1>Welcome to the Tate Gallery</h1>
 
+
+
+
+
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 </body>
 </html>

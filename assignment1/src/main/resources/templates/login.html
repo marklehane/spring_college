@@ -1,12 +1,32 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    
         <title>Spring Security Example </title>
     </head>
     <body>
-      <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Tate gallery</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li ><a href="/artist/" >Artists</a>
+</li>
+        <li><a href="/artwork/" >Artworks</a></li> 
+        			<li class="active" sec:authorize="hasRole('user')">
+     <a href="/login?logout" ><span sec:authentication="name">Bob</span>: Logout</a>
+</li>
+<li class="active" sec:authorize="!hasRole('user')">
+   <a href="/login" >Login</a>
+</li>
+      </ul>
+    </div>
+  </div>
+</nav>
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
