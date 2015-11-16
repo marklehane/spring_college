@@ -18,7 +18,10 @@
 </li>
         <li class="active"><a href="/artwork/" >Artworks</a></li> 
         			<li sec:authorize="hasRole('user')">
-     <a href="/login?logout" ><span sec:authentication="name">Bob</span>: Logout</a>
+               <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" style="background:rgba(0,0,0,0);border:none;color: #777;padding-top: 15px;
+    padding-bottom: 15px;"/>
+        </form>
 </li>
 <li sec:authorize="!hasRole('user')">
    <a href="/login" >Login</a>

@@ -20,7 +20,10 @@
      
 	
 			<li sec:authorize="hasRole('user')">
-     <a href="/login?logout" ><span sec:authentication="name">Bob</span>: Logout</a>
+               <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" style="background:rgba(0,0,0,0);border:none;color: #777;padding-top: 15px;
+    padding-bottom: 15px;"/>
+        </form>
 </li>
 <li sec:authorize="!hasRole('user')">
    <a href="/login" >Login</a>
@@ -35,7 +38,14 @@
 </nav>
 
 
-<h1>Welcome to the Tate Gallery</h1>
+<li sec:authorize="hasRole('user')">
+<h1>Hello, <span sec:authentication="name">Guest</span></h1>      
+</li>
+<li sec:authorize="!hasRole('user')">
+<h1>Hello, Guest</h1>
+</li>
+
+<h2>Welcome to the Tate Gallery</h2>
 
 
 
