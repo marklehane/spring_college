@@ -4,6 +4,11 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"></input>
+</form>
+
 <div class="container">
     <div class="row row-centered">
     <img th:src="${singleArtwork.thumbnailUrl}"/>
