@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<link href="/css/nav.css" rel="stylesheet" type="text/css"/>
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -8,6 +9,12 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout"></input>
 </form>
+
+<ul>
+  <li><a href="/" ><h1>Home</h1></a></li>
+  <li><a href="/artist/" ><h1>Artists</h1></a></li>
+  <li><a href="/artwork/" ><h1>Artworks</h1></a></li>
+</ul>
 
 <table class="table table-striped">
     <tr>
