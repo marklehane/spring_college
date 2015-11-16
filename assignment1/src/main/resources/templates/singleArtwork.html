@@ -18,7 +18,7 @@
 </li>
         <li class="active"><a href="/artwork/" >Artworks</a></li> 
         			<li class="active" sec:authorize="hasRole('user')">
-               <form th:action="@{/logout}" method="post">
+               <form th:action="@{/logout}" method="post" style="display: inline;">
             <input type="submit" value="Sign Out" style="background:rgba(0,0,0,0);border:none;color: #777;padding-top: 15px;
     padding-bottom: 15px;"/>
         </form>
