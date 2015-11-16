@@ -26,6 +26,23 @@
     
     </div>
     </div>
+    
+    <h1>Comments</h1>
+    
+    <div th:each="message3, iterationStatus : ${singleArtwork.comments}">
+    <p>------------------- <span th:text="${iterationStatus.count}">1</span> ---------------------------</p>
+    	<p>Comment: <span th:text="${message3.comment}">Text ...</span></p>
+    	<p>By: <span th:text="${message3.user}">Text ...</span></p>
+    	<p>On the: <span th:text="${message3.date}">Text ...</span></p>
+    	<p>At: <span th:text="${message3.time}">Text ...</span></p>
+    </div>
+    
+    
+    <h3>Add new comment</h3>
+    <form action="#" th:action="@{'/artwork/' + ${singleArtwork.acno}}" th:object="${comment}" method="post">
+        <p>Comment: <input type="text" th:field="*{comment}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
 
 </body>
 

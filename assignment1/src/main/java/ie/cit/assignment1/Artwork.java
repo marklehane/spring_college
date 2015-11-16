@@ -17,8 +17,9 @@ public class Artwork {
 	private String artistName;
 	private String medium;
 	private String thumbnailUrl;
-	List<Contributors> contributors ;
-	List<Movement> movements ;
+	List<Contributors> contributors;
+	List<Movement> movements;
+	List<Comment> comments;
 	@Override
 	public String toString() {
 			
@@ -34,6 +35,14 @@ public class Artwork {
 
 	public void setMovements(List<Movement> movements) {
 		this.movements = movements;
+	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 	
 	public String getClassification() {

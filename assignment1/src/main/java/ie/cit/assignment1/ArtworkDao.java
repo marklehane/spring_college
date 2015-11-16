@@ -16,6 +16,8 @@ public interface ArtworkDao {
 
 
 	void addArtists(List<Contributors> contributors, String artworkId);
+
+	void addComment(String artworkId, String comment);
 }
 
 

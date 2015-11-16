@@ -1,7 +1,12 @@
 package ie.cit.assignment1;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +55,7 @@ public class JdbcArtworkRepository implements ArtworkDao {
 		Artwork artwork = new Artwork();
 		Artist artist = new Artist();
 		List<Movement> artworkMovements = new ArrayList<Movement>();
+		List<Comment> artworkComments = new ArrayList<Comment>();
 		
 		String insertSql;
 		insertSql ="SELECT * "
@@ -65,6 +71,23 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			artwork.setMedium((String)(row.get("medium")));
 			
 		}
+		
+			String insertSql3;
+			insertSql3 ="SELECT * "
+					+ "FROM comment "
+					+ "where artwork_id = '" + Id + "'";
+			
+			
+			List<Map<String, Object>> rows3 = jdbcTemplate.queryForList(insertSql3);
+			for (Map row1 : rows3) 
+			{
+				Comment comment = new Comment();
+				comment.setComment((String)(row1.get("comment")));
+				comment.setUser((String)(row1.get("user")));
+				comment.setDate((Date)(row1.get("date")));
+				comment.setTime((Date)(row1.get("time")));
+				artworkComments.add(comment);
+			}
 		
 			String insertSql4;
 			insertSql4 ="SELECT movements.*, artwork_movements.* "
@@ -96,6 +119,7 @@ public class JdbcArtworkRepository implements ArtworkDao {
 			}
 			
 		artwork.setMovements(artworkMovements);
+		artwork.setComments(artworkComments);
 		artwork.setArtist(artist);
 		return artwork;
 	}
@@ -134,6 +158,21 @@ public class JdbcArtworkRepository implements ArtworkDao {
 
 	}
 	
+	@Override
+    public void addComment(String artworkId, String comment) 
+	{
+		Date today = Calendar.getInstance().getTime();
+		String insertSql1 ;
+		insertSql1 ="insert into comment values(?,?,?,?,?,?)";
+		try 
+		{
+			jdbcTemplate.update(insertSql1,new Object[]{0, artworkId, comment, "username", today, today});
+		}
+		catch(Exception e)
+		    {
+		       // System.out.println(e);
+		    }
+	}
 	
 	@Override
     public void addMovement(List<Movement> movements, String artistId) {
@@ -186,6 +225,8 @@ public class JdbcArtworkRepository implements ArtworkDao {
 	}
 		}
 }
+	
+	
 	
 	public static DriverManagerDataSource getDataSource() {
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
