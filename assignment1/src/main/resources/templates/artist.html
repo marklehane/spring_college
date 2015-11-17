@@ -57,18 +57,22 @@
     </table>
 
     <br></br>
+       
+     
+    <h3>Artworks:</h3>
     
-     <div class= "table-responsive table-bordered">
-    <p>Artworks:</p>
+
     
-    <div th:each="message3, iterationStatus : ${singleArtist.artworks}">
-    <p>------------------- <span th:text="${iterationStatus.count}">1</span> ---------------------------</p>
-    	<img th:src="${message3.thumbnailUrl}"/>
+    
+    <div th:each="message3, iterationStatus : ${singleArtist.artworks} " class="col-md-4">
+    <h3> <span th:text="${iterationStatus.count}">1</span></h3>
+    	<img th:src="${message3.thumbnailUrl}" style="height:200px"/>
     	<p>Artwork id: <span th:text="${message3.acno}">Text ...</span></p>
     	<p>Artwork Title: <a href="" th:href="@{'/artwork/' + ${message3.acno}}" th:text="${message3.title}"><span th:text="${message3.title}">Text ...</span></a></p>
     	<p>Artwork Movements: <span th:text="${message3.movements}">Text ...</span></p>
+    	<hr></hr>
     </div>
-    </div>
+    
 </div>
 </div>
 </body>
