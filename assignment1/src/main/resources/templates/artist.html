@@ -58,7 +58,7 @@
 
     <br></br>
     
-    
+     <div class= "table-responsive table-bordered">
     <p>Artworks:</p>
     
     <div th:each="message3, iterationStatus : ${singleArtist.artworks}">
@@ -68,7 +68,7 @@
     	<p>Artwork Title: <a href="" th:href="@{'/artwork/' + ${message3.acno}}" th:text="${message3.title}"><span th:text="${message3.title}">Text ...</span></a></p>
     	<p>Artwork Movements: <span th:text="${message3.movements}">Text ...</span></p>
     </div>
-    
+    </div>
 </div>
 </div>
 </body>
