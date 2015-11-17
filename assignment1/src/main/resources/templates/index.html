@@ -9,7 +9,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Tate gallery</a>
+      <a class="navbar-brand" href="/">Tate Gallery</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
@@ -38,12 +38,12 @@
 </nav>
 
 
-<li sec:authorize="hasRole('user')">
+<div sec:authorize="hasRole('user')">
 <h1>Hello, <span sec:authentication="name">Guest</span></h1>      
-</li>
-<li sec:authorize="!hasRole('user')">
+</div>
+<div sec:authorize="!hasRole('user')">
 <h1>Hello, Guest</h1>
-</li>
+</div>
 
 <h2>Welcome to the Tate Gallery</h2>
 
