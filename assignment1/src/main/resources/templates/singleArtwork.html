@@ -56,8 +56,7 @@
     
     </div>
     </div>
-    <div sec:authorize="hasRole('user')">
-    
+        
     <h1>Comments</h1>
     
     
@@ -70,7 +69,7 @@
     	<p>At: <span th:text="${message3.time}">Text ...</span></p>
     </div>
     
-    
+<div sec:authorize="hasRole('user')">   
     <h3>Add new comment</h3>
     <form action="#" th:action="@{'/artwork/' + ${singleArtwork.acno}}" th:object="${comment}" method="post">
         <p>Comment: <input type="text" th:field="*{comment}" /></p>
