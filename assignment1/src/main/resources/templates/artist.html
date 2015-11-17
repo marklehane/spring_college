@@ -69,6 +69,7 @@
     	<img th:src="${message3.thumbnailUrl}" style="height:200px"/>
     	<p>Artwork id: <span th:text="${message3.acno}">Text ...</span></p>
     	<p>Artwork Title: <a href="" th:href="@{'/artwork/' + ${message3.acno}}" th:text="${message3.title}"><span th:text="${message3.title}">Text ...</span></a></p>
+    	<p>Artwork Medium: <span th:text="${message3.medium}">Text ...</span></p>
     	<p>Artwork Movements: <span th:text="${message3.movements}">Text ...</span></p>
     	<hr></hr>
     </div>
