@@ -55,19 +55,31 @@
     </table>
     
     </div>
-    </div>
+
         
     <h1>Comments</h1>
     
     
+
     
-    <div th:each="message3, iterationStatus : ${singleArtwork.comments}">
-    <p>------------------- <span th:text="${iterationStatus.count}">1</span> ---------------------------</p>
-    	<p>Comment: <span th:text="${message3.comment}">Text ...</span></p>
-    	<p>By: <span th:text="${message3.user}">Text ...</span></p>
-    	<p>On the: <span th:text="${message3.date}">Text ...</span></p>
-    	<p>At: <span th:text="${message3.time}">Text ...</span></p>
-    </div>
+    <div class="col-sm-12" th:each="message3, iterationStatus : ${singleArtwork.comments}">
+    <div class="col-sm-5" >
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong><span th:text="${message3.user}">Text ...</span></strong> <span class="text-muted">commented <span th:text="${message3.date}">Text ...</span></span>
+</div>
+<div class="panel-body">
+<span th:text="${message3.comment}">Text ...</span>
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+
+</div><!-- /col-sm-5 -->
+</div>
+ 
+    
+    
+    
+
     
 <div sec:authorize="hasRole('user')">   
     <h3>Add new comment</h3>
@@ -76,6 +88,7 @@
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </div>
+    </div>
 </body>
 
 
