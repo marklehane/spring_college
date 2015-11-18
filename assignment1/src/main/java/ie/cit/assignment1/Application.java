@@ -27,24 +27,7 @@ public class Application {
 	        return dataSource;
 	    }
 	  
-	// Login
-//		  @RequestMapping("/login")
-//		  public String login() {
-//		    return "login.html";
-//		  }
-		 
-		  // error
-//		  @RequestMapping("/error")
-//		  public String error(HttpServletRequest request, Model model) {
-//			    model.addAttribute("errorCode", request.getAttribute("javax.servlet.error.status_code"));
-//			    Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
-//			    String errorMessage = null;
-//			    if (throwable != null) {
-//			      errorMessage = throwable.getMessage();
-//			    }
-//			    model.addAttribute("errorMessage", errorMessage);
-//			    return "error.html";
-//			  }
+
 		  
 
 	 public static void main(String[] args) {
@@ -57,6 +40,18 @@ public class Application {
 		System.out.printf("Processing Artwork file %s...\n", artworkFile);
 
 		try {
+			
+			//File path = new File("/collection-master/artists/");
+			
+			//File [] files = path.listFiles();
+			//for (int i = 0; i < files.length; i++){
+			//	if (files[i].isFile()){
+			//			Artist artist = new ObjectMapper().readValue(files[i], Artist.class);
+			//		}
+			//}
+			
+			
+		
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
 			JdbcArtistRepository artistworksaver = new JdbcArtistRepository(getDataSource()) ;
 			artistworksaver.saveOrUpdate(artist);
