@@ -26,14 +26,10 @@ public class Application {
 	        dataSource.setPassword("");
 	        return dataSource;
 	    }
-	  
-
-		  
 
 	 public static void main(String[] args) {
 	        SpringApplication.run(Application.class, args);
 	    
-		
 		String artistFile = args[0];
 		String artworkFile = args[1];
 		System.out.printf("Processing Artist file %s...\n", artistFile);

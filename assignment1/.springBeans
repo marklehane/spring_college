@@ -7,6 +7,13 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+		<config>java:ie.cit.assignment2.Contributors</config>
+		<config>java:ie.cit.assignment2.Artist</config>
+		<config>java:ie.cit.assignment2.Artwork</config>
+		<config>java:ie.cit.assignment2.Movement</config>
+		<config>java:ie.cit.assignment2.Birth</config>
+		<config>java:ie.cit.assignment2.Application</config>
+		<config>java:ie.cit.assignment2.Place</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
