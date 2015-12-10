@@ -1,11 +1,8 @@
-
 package ie.cit.assignment1;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
 
-@Generated("org.jsonschema2pojo")
 public class Photos {
 
     private Integer page;
@@ -72,6 +69,13 @@ public class Photos {
     	
         this.photo = photo;
         
+    }
+    
+    @Override
+    public String toString(){
+    	
+		return "" + photo;
+    	
     }
 
 }

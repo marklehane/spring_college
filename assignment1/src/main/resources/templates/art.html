@@ -13,9 +13,10 @@
     <div>
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
-        <li class="active"><a href="/artist/" >Artists</a>
-</li>
-        <li><a href="/artwork/" >Artworks</a></li> 
+        <li class="active"><a href="/artist/" >Artists</a></li>
+        <li><a href="/artwork/" >Artworks</a></li>
+        <li><a href="/flickr/" >Flickr</a></li>
+         
         			<li sec:authorize="hasRole('user')">
             <form th:action="@{/logout}" method="post" style="display: inline;">
             <input type="submit" value="Sign Out" style="background:rgba(0,0,0,0);border:none;color: #777;padding-top: 15px;

@@ -28,5 +28,12 @@ public class Response {
         this.stat = stat;
         
     }
-
+    
+    @Override
+    public String toString(){
+    	
+		return "" + photos;
+    	
+    }
+    
 }

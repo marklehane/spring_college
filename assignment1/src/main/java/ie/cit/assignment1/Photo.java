@@ -8,11 +8,6 @@ public class Photo {
     private String server;
     private Integer farm;
     private String title;
-    private Integer ispublic;
-    private Integer isfriend;
-    private Integer isfamily;
-    private String ownername;
-    private String dateadded;
 
     public String getId() {
     	
@@ -86,62 +81,12 @@ public class Photo {
         
     }
 
-    public Integer getIspublic() {
+    
+    @Override
+    public String toString(){
     	
-        return ispublic;
-        
-    }
-
-    public void setIspublic(Integer ispublic) {
+		return "" + id + secret + server + farm;
     	
-        this.ispublic = ispublic;
-        
-    }
-
-    public Integer getIsfriend() {
-    	
-        return isfriend;
-        
-    }
-
-    public void setIsfriend(Integer isfriend) {
-        this.isfriend = isfriend;
-    }
-
-    public Integer getIsfamily() {
-    	
-        return isfamily;
-        
-    }
-
-    public void setIsfamily(Integer isfamily) {
-    	
-        this.isfamily = isfamily;
-        
-    }
-
-    public String getOwnername() {
-    	
-        return ownername;
-        
-    }
-
-    public void setOwnername(String ownername) {
-    	
-        this.ownername = ownername;
-        
-    }
-
-    public String getDateadded() {
-    	
-        return dateadded;
-        
-    }
-
-    public void setDateadded(String dateadded) {
-    	
-        this.dateadded = dateadded;
-        
     }
     
 }
