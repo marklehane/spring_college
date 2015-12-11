@@ -32,11 +32,17 @@
   </div>
 </nav>
 
+<span>The pictures below are the 15 most recent pictures uploaded to the Tate Gallery group Flickr Page, viewable <a href="https://www.flickr.com/groups/tatemodern/">here</a></span>
+
 <div th:each="photo, iterationStatus : ${response.photos.photo}">
 
-<p th:text="${photo.farm}"></p>
+	<h3 th:text="${photo.title}"></h3>
 
-<a th:href="@{https://farm{photo.farm}.staticflickr.com/{photo.server}/{photo.id}_{photo.secret}.jpg}">dadsad</a>
+	<img th:src="@{'https://farm' + ${photo.farm} + '.staticflickr.com/' + ${photo.server} + '/' + ${photo.id} + '_' + ${photo.secret} + '.jpg'}"/>
+	
+
+
+	<a th:href="@{'https://farm' + ${photo.farm} + '.staticflickr.com/' + ${photo.server} + '/' + ${photo.id} + '_' + ${photo.secret} + '.jpg'}">Link</a>
 
 </div>
 

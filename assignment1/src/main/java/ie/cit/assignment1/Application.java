@@ -2,6 +2,9 @@ package ie.cit.assignment1;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -37,17 +41,24 @@ public class Application {
 
 		try {
 			
-			//File path = new File("/collection-master/artists/");
+			RestTemplate template = new RestTemplate();
+			String query = "https://api.flickr.com/services/rest/?method=flickr.groups.pools.getPhotos&api_key=372d1b4fe24e5e974ef89ff1d9b002ad&group_id=33133376%40N00&per_page=15&page=1&format=json&nojsoncallback=1&auth_token=72157659930630484-1640caac63063a3b&api_sig=0b192f176fc0b04f893494301ae76539";
 			
-			//File [] files = path.listFiles();
-			//for (int i = 0; i < files.length; i++){
-			//	if (files[i].isFile()){
-			//			Artist artist = new ObjectMapper().readValue(files[i], Artist.class);
-			//		}
-			//}
+			String encodedQuery = URLDecoder.decode(query, "UTF-8");
 			
+			System.out.println(encodedQuery);
 			
-		
+			Response response = template.getForObject(encodedQuery, Response.class);
+			
+			System.out.println("Response: " + response.toString());
+			
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+
 			Artist artist = new ObjectMapper().readValue(new File(artistFile), Artist.class);
 			JdbcArtistRepository artistworksaver = new JdbcArtistRepository(getDataSource()) ;
 			artistworksaver.saveOrUpdate(artist);
@@ -68,6 +79,8 @@ public class Application {
 			System.out.println("\n---------------------------\nArtwork");
 			System.out.println("\n" + artwork.toString());
 			System.out.println("\n---------------------------");
+			
+
 			
 		} catch (JsonParseException e) {
 			

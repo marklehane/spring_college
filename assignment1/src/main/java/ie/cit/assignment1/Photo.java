@@ -2,7 +2,7 @@ package ie.cit.assignment1;
 
 public class Photo {
 
-	private String id;
+    private String id;
     private String owner;
     private String secret;
     private String server;
@@ -10,15 +10,11 @@ public class Photo {
     private String title;
 
     public String getId() {
-    	
         return id;
-        
     }
 
     public void setId(String id) {
-    	
         this.id = id;
-        
     }
 
     public String getOwner() {
@@ -38,7 +34,7 @@ public class Photo {
         return secret;
         
     }
-    
+
     public void setSecret(String secret) {
     	
         this.secret = secret;
@@ -81,12 +77,10 @@ public class Photo {
         
     }
 
-    
-    @Override
     public String toString(){
     	
-		return "" + id + secret + server + farm;
+    	return "ID: "+id + " " +"Server: " + server + " " + "Farm: "+farm + " " + "Secret: " + secret + "Title: " + title + "\n\n";
     	
     }
-    
+
 }

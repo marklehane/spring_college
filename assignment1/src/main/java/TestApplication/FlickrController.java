@@ -1,5 +1,7 @@
 package TestApplication;
 
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,7 @@ import ie.cit.assignment1.Response;
 public class FlickrController {
 
 	@RequestMapping("/flickr")
-	public String main(Model model){
+	public String main(Model model) throws UnsupportedEncodingException{
 		
 		GetResponse test = new GetResponse();
 		Response response = test.get();
